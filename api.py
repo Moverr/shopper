@@ -1,25 +1,14 @@
 from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
+from apis.items import items
 
 app = Flask(__name__)
+app.register_blueprint(items,url_prefix='/items')
 api = Api(app)
 
- 
-@app.route('/items')
-def get_items():
-    pass
-
-@app.route('/items')
-def add_item():
-    pass
-
-@app.route('/items/id/<id/>')
-def get_item(id):
-    pass
-    
-@app.route('/items/archive/id/<id/>')
-def archive_item():
-    pass
+@app.route('/')
+def method_name():
+    return ("Did YOu Know ")
 
 
 
