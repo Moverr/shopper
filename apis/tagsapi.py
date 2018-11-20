@@ -1,7 +1,7 @@
 from flask import Blueprint,Flask
  
-tags = Blueprint('tags', __name__)
+tagsap = Blueprint('tagsap', __name__)
 
-@tags.route('/')
+@tagsap.route('/')
 def index():
     return('tags')

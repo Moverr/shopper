@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
-from apis.items import items
-from apis.categories import categories
-from apis.tags import tags
+from apis.itemsapi import itemsapi
+from apis.categoriesapi import categoriesapi
+from apis.tagsapi import tagsapi
 
 
 

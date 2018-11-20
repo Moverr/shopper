@@ -1,7 +1,7 @@
 from flask import Blueprint,Flask
  
-tags = Blueprint('users', __name__)
+usersap = Blueprint('usersap', __name__)
 
-@tags.route('/')
+@usersap.route('/')
 def index():
     return('users')

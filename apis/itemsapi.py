@@ -1,7 +1,7 @@
 from flask import Blueprint,Flask
  
-items = Blueprint('items', __name__)
+itemsapi = Blueprint('itemsapi', __name__)
 
-@items.route('/')
+@itemsapi.route('/')
 def index():
     return('ITEMS')
