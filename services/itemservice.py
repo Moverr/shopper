@@ -1,8 +1,10 @@
 class ItemService():
-
-    def create(args):
+    def __init__(args):
+        pass
         
-    pass;
+
+    def create(args):        
+    pass
 
 
 
