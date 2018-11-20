@@ -7,9 +7,9 @@ from apis.tagsapi import tagsapi
 
 
 app = Flask(__name__)
-app.register_blueprint(items,url_prefix='/items')
-app.register_blueprint(categories,url_prefix='/categories')
-app.register_blueprint(tags,url_prefix='/tags')
+app.register_blueprint(itemsapi,url_prefix='/items')
+app.register_blueprint(categoriesapi,url_prefix='/categories')
+app.register_blueprint(tagsapi,url_prefix='/tags')
 
 api = Api(app)
 
