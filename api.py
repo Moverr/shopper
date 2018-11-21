@@ -14,7 +14,7 @@ app.register_blueprint(tagsapi,url_prefix='/tags')
 api = Api(app)
 
 @app.route('/')
-def method_name():
+def index():
     return ("Did YOu Know ")
 
 
