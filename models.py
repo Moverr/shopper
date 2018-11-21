@@ -10,6 +10,8 @@ class Categories(Model):
     status =  Column(Enum(StatusEnum))
     author_id = Column(Integer, nullable=False)    
     date_created = Column(DateTime, default=datetime.datetime.utcnow)
+    updated_by = Column(Integer)
+    date_updated = Column(DateTime)
 
 class Contacts(Model):
     pass
