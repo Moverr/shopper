@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import reqparse, abort, Api, Resource
 from apis.itemsapi import itemsapi
@@ -17,9 +17,28 @@ app.register_blueprint(tagsapi,url_prefix='/tags')
 
 api = Api(app)
 
+posts = [
+    {
+        'author':'Corey Shafer',
+        'title':'Blog Post 1',
+        'content': '  My First Blog post',
+        'date_posted':'Nov 20 2018'
+
+    },
+    {
+        'author':'Muyinda Rogers',
+        'title':'Blog Post 2',
+        'content': '  My Second Blog post',
+        'date_posted':'Nov 20 2018'
+
+    }
+    
+
+]
+
 @app.route('/')
 def index():
-    return ("Did YOu Know ")
+    return render_template('home.html',posts=posts,title='LORD ABOVE')
 
 
 
