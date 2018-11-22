@@ -3,15 +3,16 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Date,Enum,DateTime
 from sqlalchemy.orm import relationship
 from flask_appbuilder import Model
 from enums.statusenum   import StatusEnum
+from app import db
 
-class Categories(Model):
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False)
-    status =  Column(Enum(StatusEnum))
-    author_id = Column(Integer, nullable=False)    
-    date_created = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_by = Column(Integer)
-    date_updated = Column(DateTime)
+class Categories(db.Model):
+    id = db.Column(Integer, primary_key=True)
+    name = db.Column(String(50), nullable=False)
+    status =  db.Column(Enum(StatusEnum))
+    author_id = db.Column(Integer, nullable=False)    
+    date_created = db.Column(DateTime, default=datetime.datetime.utcnow)
+    updated_by = db.Column(Integer)
+    date_updated = db.Column(DateTime)
 
 class Contacts(Model):
     pass
