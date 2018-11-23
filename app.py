@@ -4,11 +4,14 @@ from flask_restful import reqparse, abort, Api, Resource
 from apis.itemsapi import itemsapi
 from apis.categoriesapi import categoriesapi
 from apis.tagsapi import tagsapi
+from apis.forms.forms import RegistrationForm,LoginForm
 
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db";
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
+app.config['SECRET_KEY'] = '3e740fff46cc603965d8e842ded3d21a'
+
 db = SQLAlchemy(app)
 
 app.register_blueprint(itemsapi,url_prefix='/items')
@@ -40,6 +43,10 @@ posts = [
 def index():
     return render_template('home.html',posts=posts,title='LORD ABOVE')
 
+@app.route('/register')
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title='Registration Form',form=form)
 
 
 if __name__ == '__main__':
