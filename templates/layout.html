@@ -14,10 +14,21 @@
 
 <body >
 
-<div class="container-fluid">	
+<div >	
     {% include 'navbar.html' %}
-<div>
+    
+<div class="container-fluid">
     {% block content %}
+    {% with  messages = get_flashed_messages()  %}
+        {% if messages %}            
+            {% for message in messages  %}
+                <div class="alert ">
+                MODO
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     {% endblock content %}
 </div>
 </div>

@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for
+from flask import Flask,render_template,url_for,flash,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import reqparse, abort, Api, Resource
 from apis.itemsapi import itemsapi
@@ -43,10 +43,17 @@ posts = [
 def index():
     return render_template('home.html',posts=posts,title='LORD ABOVE')
 
-@app.route('/register')
+@app.route('/register',methods=['GET','POST'])
 def register():
     form = RegistrationForm()
-    return render_template('register.html', title='Registration Form',form=form)
+   
+    if form.validate_on_submit():     
+        response = 'Account Created Succesfully'    
+        return redirect(url_for('index',response=response))
+    else:        
+        response = ' Something Went Wrong '
+
+    return render_template('register.html', title='Registration Form',form=form,error=response)
 
 @app.route('/login')
 def login():

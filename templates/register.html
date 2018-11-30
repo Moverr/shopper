@@ -1,67 +1,49 @@
 {% extends 'layout.html' %}
 
 {% block content %}
- <div class="content-section">
+ <div class="content-section col-md-6">
  <form method="POST", action="">
     {{ form.hidden_tag() }}
-    <fieldset class="form-group">
-    	<legend class="border-bottom mb-4">Join Today</legend>
-    	<div class="form-group">
-    		{{ form.username.label(class="form-control-label")}}
-    		{{ form.username(class="form-control-label form-control-lg")}}
-    	</div>
-
-    	<div class="form-group">
-    		{{ form.email.label(class="form-control-label")}}
-    		{{ form.email(class="form-control-label form-control-lg")}}
-    	</div>
-
-
-    	<div class="form-group">
-    		{{ form.password.label(class="form-control-label")}}
-    		{{ form.password(class="form-control-label form-control-lg")}}
-    	</div>
+	<legend class="border-bottom mb-4">Join Today</legend>
+    <div class="form-group">
+    	{{ form.username.label()}}
+    	{{ form.username(class="form-control form-control-lg",placeholder="Password")}}
+    </div>
+  
+  	<div class="form-group">
+    		{{ form.email.label()}}
+    		{{ form.email(class="form-control",placeholder="Email Address")}}
+    </div>
 
 
-    	<div class="form-group">
-    		{{ form.confirm_password.label(class="form-control-label")}}
-    		{{ form.confirm_password(class="form-control-label form-control-lg")}}
-    	</div>
-    </fieldset>
+	<div class="form-group">
+    		{{ form.password.label()}}
+    		{{ form.password(class="form-control",placeholder="Enter Password")}}
+    </div>
+
+
+	<div class="form-group">
+    		{{ form.confirm_password.label()}}
+    		{{ form.confirm_password(class="form-control",placeholder="Re Enter Password")}}
+    </div>
+
+
+ 
     
     	<div class="form-group">
     	 
     		{{  form.submit(class="btn btn-primary") }}
     	</div>
 
+  <div class="bodder-bottom pt-3" >
+    <small class="text-muted">
+         Already registered <a href="{{url_for('login')}}">Sign in  </a>
+    </small>
+  </div>
+
  </form>
 
-
- <form>
-  <div class="form-group">
-
-  		{{ form.username.label(for="username")}}
-    	{{ form.username(class="form-control")}}
-
-    <label for="exampleInputEmail1">USERNAME</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+ 
 
  </div>
 {% endblock content %}
