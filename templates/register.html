@@ -18,7 +18,7 @@
   
   	<div class="form-group">
     		{{ form.email.label()}}
-			{% if form.username.errors %}
+			{% if form.email.errors %}
 				{{ form.email(class="form-control form-control-lg is-invalid ",placeholder="Email Address")}}
 			{% endif %}
 
@@ -28,8 +28,13 @@
 
 	<div class="form-group">
     		{{ form.password.label()}}
-			{% if form.username.errors %}
-				{{ form.password(class="form-control form-control-lg is-invalid ",placeholder="Email Password")}}
+			{% if form.password.errors %}
+				{{ form.password(class="form-control form-control-lg is-invalid ",placeholder="Enter Password")}}
+				<div class="invalid-feedback">
+				{% for error in form.password.errors %}
+					<span> {{error}} </span>
+				{% endfor %}
+				</div>
 			{% endif %}
     		{{ form.password(class="form-control",placeholder="Enter Password")}}
     </div>
@@ -37,6 +42,9 @@
 
 	<div class="form-group">
     		{{ form.confirm_password.label()}}
+			{% if form.confirm_password.errors %}
+				{{ form.confirm_password(class="form-control form-control-lg is-invalid ",placeholder="Enter Password")}}
+			{% endif %}
     		{{ form.confirm_password(class="form-control",placeholder="Re Enter Password")}}
     </div>
 
