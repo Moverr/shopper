@@ -47,13 +47,18 @@ def index():
 def register():
     form = RegistrationForm()
    
-    if form.validate_on_submit():     
-        response = 'Account Created Succesfully'    
-        return redirect(url_for('index',success=response))
-    else:        
-        response = ' Something Went Wrong '
 
-    return render_template('register.html', title='Registration Form',form=form,error=response)
+    if form.validate_on_submit():     
+        response = 'Account Created Succesfully, Kindly check your email address to confirm '     
+        return render_template('register.html', title='Registration Form',form=form,success=response)
+    # else:        
+    #     response = ' Something Went Wrong '
+    #     return render_template('register.html', title='Registration Form',form=form,error=response)
+
+    
+    return render_template('register.html', title='Registration Form',form=form)
+
+    
 
 @app.route('/login')
 def login():
