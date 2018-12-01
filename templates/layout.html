@@ -19,16 +19,28 @@
     
 <div class="container-fluid">
     {% block content %}
-    {% with  messages = get_flashed_messages()  %}
-        {% if messages %}            
-            {% for message in messages  %}
-                <div class="alert ">
+   
+        {% if error %}           
+           
+                <div class="alert-warning ">
                 MODO
-                    {{message}}
+                    {{error}}
                 </div>
-            {% endfor %}
+           
         {% endif %}
-    {% endwith %}
+
+
+         {% if success %}           
+           
+                <div class="alert-success ">
+                MODO
+                    {{success}}
+                </div>
+           
+        {% endif %}
+
+
+ 
     {% endblock content %}
 </div>
 </div>

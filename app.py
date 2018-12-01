@@ -49,7 +49,7 @@ def register():
    
     if form.validate_on_submit():     
         response = 'Account Created Succesfully'    
-        return redirect(url_for('index',response=response))
+        return redirect(url_for('index',success=response))
     else:        
         response = ' Something Went Wrong '
 
