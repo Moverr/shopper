@@ -40,6 +40,7 @@ posts = [
 ]
 
 @app.route('/')
+@app.route('/home')
 def index():
     return render_template('home.html',posts=posts,title='LORD ABOVE')
 
@@ -60,9 +61,18 @@ def register():
 
     
 
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit(): 
+        if form.email.data =='moverr@gmail.com' and form.password.data == 'password':
+            response = 'Account  Logged in successfully '     
+            return render_template('login.html', title='Login Form',form=form,success=response)
+        else:
+            response = 'Invalid Login Credentials  '   
+            return render_template('login.html', title='Login Form',form=form,error=response)
+
+
     return render_template('login.html', title='Login Form',form=form)
 
 
