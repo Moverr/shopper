@@ -1,6 +1,8 @@
 from flask import Flask,render_template,url_for,flash,redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import reqparse, abort, Api, Resource
+from wsgiref.simple_server import make_server
+
 from apis.itemsapi import itemsapi
 from apis.categoriesapi import categoriesapi
 from apis.tagsapi import tagsapi
@@ -8,17 +10,17 @@ from apis.forms.forms import RegistrationForm,LoginForm
 
 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
-app.config['SECRET_KEY'] = '3e740fff46cc603965d8e842ded3d21a'
+application = Flask(__name__)
+# application.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
+application.config['SECRET_KEY'] = '3e740fff46cc603965d8e842ded3d21a'
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(application)
 
-app.register_blueprint(itemsapi,url_prefix='/items')
-app.register_blueprint(categoriesapi,url_prefix='/categories')
-app.register_blueprint(tagsapi,url_prefix='/tags')
+application.register_blueprint(itemsapi,url_prefix='/items')
+application.register_blueprint(categoriesapi,url_prefix='/categories')
+application.register_blueprint(tagsapi,url_prefix='/tags')
 
-api = Api(app)
+api = Api(application)
 
 posts = [
     {
@@ -39,12 +41,12 @@ posts = [
 
 ]
 
-@app.route('/')
-@app.route('/home')
+@application.route('/')
+@application.route('/home')
 def index():
     return render_template('home.html',posts=posts,title='LORD ABOVE')
 
-@app.route('/register',methods=['GET','POST'])
+@application.route('/register',methods=['GET','POST'])
 def register():
     form = RegistrationForm()
    
@@ -61,7 +63,7 @@ def register():
 
     
 
-@app.route('/login',methods=['GET','POST'])
+@application.route('/login',methods=['GET','POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit(): 
@@ -78,4 +80,11 @@ def login():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # application.run()
+    httpd = make_server('', 8000, application)
+    print("Serving on port 8000...")
+    httpd.serve_forever()
+
+
+
+ 
