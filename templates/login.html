@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% include 'alerts.html' %}
+
+
+ <div class="content-section col-md-6">
+ <form method="POST", action="">
+    {{ form.hidden_tag() }}
+	<h1>LOGIN </h1>
+    
+  
+  	<div class="form-group">
+    		{{ form.email.label()}}
+			{% if form.email.errors %}
+				{{ form.email(class="form-control form-control-lg is-invalid ",placeholder="Email Address")}}
+				<div class="invalid-feedback">
+					{% for error in form.email.errors %}
+						<span> {{error}} </span>
+					{% endfor %}
+				</div>
+			{% else %}
+
+    		{{ form.email(class="form-control",placeholder="Email Address")}}
+			{% endif %}
+    </div>
+
+
+	<div class="form-group">
+    		{{ form.password.label()}}
+			{% if form.password.errors %}
+				{{ form.password(class="form-control form-control-lg is-invalid ",placeholder="Enter Password")}}
+				<div class="invalid-feedback">
+				{% for error in form.password.errors %}
+					<span> {{error}} </span>
+				{% endfor %}
+				</div>
+			{% else %}
+    		{{ form.password(class="form-control",placeholder="Enter Password")}}
+			{% endif %}
+    </div>
+
+
+
+
+ 
+    
+    	<div class="form-group">
+    	 
+    		{{  form.submit(class="btn btn-primary") }}
+    	</div>
+
+  <div class="bodder-bottom pt-3" >
+    <small class="text-muted">
+         Already registered <a href="{{url_for('login')}}">Sign in  </a>
+    </small>
+  </div>
+
+ </form>
+
+ 
+
+ </div>
+{% endblock content %}
+
