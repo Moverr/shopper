@@ -80,10 +80,10 @@ def login():
 
 
 if __name__ == '__main__':
-    # application.run()
-    httpd = make_server('', 8000, application)
-    print("Serving on port 8000...")
-    httpd.serve_forever()
+    application.run()
+    # httpd = make_server('', 8000, application)
+    # print("Serving on port 8000...")
+    # httpd.serve_forever()
 
 
 
