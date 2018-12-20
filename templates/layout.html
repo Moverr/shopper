@@ -53,7 +53,7 @@ Follow: http://www.twitter.com/themehats
     <!-- BEGIN THEME STYLES -->
 	<link href="{{ url_for('static',filename='assets/demos/default/css/plugins.css') }} " rel="stylesheet" type="text/css"/>
 	<link href="{{ url_for('static',filename='assets/demos/default/css/components.css') }} "  id="style_components" rel="stylesheet" type="text/css"/>
-	<link href="{{ url_for('static',filename='assets/demos/default/css/themes/default.css') }} "  rel="stylesheet" id="style_theme" type="text/css"/>
+	<link href="{{ url_for('static',filename='assets/demos/default/css/themes/default.cs') }} "  rel="stylesheet" id="style_theme" type="text/css"/>
 	<link href="{{ url_for('static',filename='assets/demos/default/css/custom.css') }} "  rel="stylesheet" type="text/css"/>
 	<!-- END THEME STYLES -->
 
@@ -68,7 +68,7 @@ Follow: http://www.twitter.com/themehats
    
     
 <!-- <div class="container-fluid"> -->
-
+{% include 'navbar.html' %}
     {% block content %}
    
        
